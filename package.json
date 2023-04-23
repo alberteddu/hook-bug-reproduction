@@ -1,0 +1,34 @@
+{
+  "private": true,
+  "name": "tina-remix-starter",
+  "version": "0.1.0",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tinacms build && remix build",
+    "dev": "tinacms dev -c \"remix dev\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@remix-run/node": "^1.7.3",
+    "@remix-run/react": "^1.7.3",
+    "@remix-run/vercel": "^1.7.3",
+    "@vercel/node": "^2.4.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tinacms": "^1.0.0"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^1.7.3",
+    "@remix-run/eslint-config": "^1.7.3",
+    "@remix-run/serve": "^1.7.3",
+    "@tinacms/cli": "^1.0.0",
+    "eslint": "^8.23.1"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "resolutions": {
+    "react-router": "6.3.0",
+    "react-router-dom": "6.3.0"
+  }
+}
