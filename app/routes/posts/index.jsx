@@ -37,7 +37,6 @@ export const loader = async () => {
       data,
       query,
       variables,
-      //myOtherProp: 'some-other-data',
     },
   };
 };

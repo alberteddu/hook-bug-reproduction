@@ -1,3 +1,8 @@
+import {useLoaderData} from "@remix-run/react";
+import {useTina} from "tinacms/dist/react";
+import client from "../.tina/__generated__/client";
+import {TinaMarkdown} from "tinacms/dist/rich-text";
+
 const {
   Links,
   LiveReload,
@@ -13,6 +18,15 @@ export const meta = () => ({
 });
 
 export default function App() {
+  const { props } = useLoaderData();
+  const { data } = useTina({
+    query: props.query,
+    variables: props.variables,
+    data: props.data,
+  });
+
+  const content = data.page.body;
+
   return (
     <html lang="en">
       <head>
@@ -22,6 +36,7 @@ export default function App() {
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
+        Content: <TinaMarkdown content={content} />
         <Outlet />
         <ScrollRestoration />
         <Scripts />
@@ -30,3 +45,18 @@ export default function App() {
     </html>
   );
 }
+
+
+export const loader = async ({ params }) => {
+  const { data, query, variables } = await client.queries.page({
+    relativePath: "home.mdx",
+  });
+
+  return {
+    props: {
+      data,
+      query,
+      variables,
+    },
+  };
+};
